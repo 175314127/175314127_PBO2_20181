@@ -36,7 +36,7 @@ public class DaftarAntrianPasien extends JDialog{
         this.add(judulLabel);
         
         namaLabel= new JLabel("nama           :");
-        namaLabel.setBounds(60,120,100,50);
+        namaLabel.setBounds(60,130,100,50);
         this.add(namaLabel);
         
         namaLabel = new JLabel("No Rekam Medis : ");
@@ -44,11 +44,13 @@ public class DaftarAntrianPasien extends JDialog{
         this.add(namaLabel);
         
         namaLabel = new JLabel("Alamat : ");
+        namaLabel.setBounds(60, 160, 100, 50);
+        this.add(namaLabel);
     }
     public void Text(){
               
         namaText = new JTextField();
-        namaText.setBounds(200, 136,150,300);
+        namaText.setBounds(200, 146,150,300);
         namaText.setSize(50, 20);
         this.add(namaText);
         
@@ -56,6 +58,8 @@ public class DaftarAntrianPasien extends JDialog{
         namaText.setBounds(200, 120,150,300);
         namaText.setSize(100, 20);
         this.add(namaText);
+        
+        
     }
     public void Button(){
         
