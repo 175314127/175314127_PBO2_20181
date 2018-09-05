@@ -9,7 +9,7 @@ package view;
  *
  * @author admin
  */
-public class min {
+public class view {
     public static void main(String[] args) {
         DaftarAntrianPasien test = new DaftarAntrianPasien("Daftar Antrian Pasien");
         test.setSize(500, 400);

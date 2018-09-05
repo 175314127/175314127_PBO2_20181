@@ -51,7 +51,7 @@ public class DaftarAntrianPasien extends JDialog{
               
         namaText = new JTextField();
         namaText.setBounds(200, 146,150,300);
-        namaText.setSize(50, 20);
+        namaText.setSize(150, 20);
         this.add(namaText);
         
         namaText = new JTextField();
@@ -59,7 +59,10 @@ public class DaftarAntrianPasien extends JDialog{
         namaText.setSize(100, 20);
         this.add(namaText);
         
-        
+        namaText = new JTextField();
+        namaText.setBounds(200,175,150,300);
+        namaText.setSize(100, 20);
+        this.add(namaText);
     }
     public void Button(){
         
