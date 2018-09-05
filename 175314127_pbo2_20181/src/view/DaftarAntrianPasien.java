@@ -26,6 +26,7 @@ public class DaftarAntrianPasien extends JDialog{
         this.setTitle(judul);
         init();
         Text();
+        Button();
     }
     public void init(){
         this.setLayout(null);
@@ -34,19 +35,33 @@ public class DaftarAntrianPasien extends JDialog{
         judulLabel.setBounds(150, 50 ,150 ,50);
         this.add(judulLabel);
         
-        namaLabel= new JLabel("nama :");
+        namaLabel= new JLabel("nama           :");
         namaLabel.setBounds(60,120,100,50);
         this.add(namaLabel);
         
         namaLabel = new JLabel("No Rekam Medis : ");
         namaLabel.setBounds(60, 100, 120, 50);
         this.add(namaLabel);
+        
+        namaLabel = new JLabel("Alamat : ");
     }
     public void Text(){
               
         namaText = new JTextField();
-        namaText.setBounds(105, 135,50,200);
+        namaText.setBounds(200, 136,150,300);
         namaText.setSize(50, 20);
         this.add(namaText);
+        
+        namaText = new JTextField();
+        namaText.setBounds(200, 120,150,300);
+        namaText.setSize(100, 20);
+        this.add(namaText);
+    }
+    public void Button(){
+        
+        saveButton = new JButton("Simpan");
+        saveButton.setBounds(200,250,100,300);
+        saveButton.setSize(100,50);
+        this.add(saveButton);
     }
 }
