@@ -15,7 +15,7 @@ public class Pasien {
  * TanggalLahir,BulanLahir,TahunLahir bertipe interger
  * dan semua variabel bersifat private
  */
-   private String noRekamMedis; 
+   private String noRekamMedis,nik; 
    private String nama,alamat;
    private String TempatLahir;
    private int TanggalLahir;
@@ -164,6 +164,14 @@ public class Pasien {
         }else{
             throw new Exception("Tahun Lahir tidak boleh nol");
         }
+    }
+
+    public String getNik() {
+        return nik;
+    }
+
+    public void setNik(String nik) {
+        this.nik = nik;
     }
    
    
