@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modal;
+package model;
 
 /**
  *
@@ -21,7 +21,7 @@ public class AntrianPasien {
     private int BulanAntrian;
     private int TahunAntrian;
     private Klinik klinik;
-    private Pasien[] daftarPasien;
+    private Pasien daftarPasienAntri[];
 
     /**
      * Terdapat Getter getTanggalAntrian bertipe int yang berfungsi mengembalikan nilai 
@@ -121,7 +121,7 @@ public class AntrianPasien {
  * @return 
  */
     public Pasien[] getDaftarPasien() {
-        return daftarPasien;
+        return daftarPasienAntri;
     }
     
 /**
@@ -129,8 +129,10 @@ public class AntrianPasien {
  * @param daftarPasien 
  */
     public void setDaftarPasien(Pasien[] daftarPasien) {
-        this.daftarPasien = daftarPasien;
+        this.daftarPasienAntri = daftarPasien;
     }
-    
+    public void mendaftar (Pasien[] pasien){
+        this.daftarPasienAntri = pasien;
+    }
     
 }
