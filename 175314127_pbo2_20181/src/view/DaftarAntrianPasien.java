@@ -71,4 +71,5 @@ public class DaftarAntrianPasien extends JDialog{
         saveButton.setSize(100,50);
         this.add(saveButton);
     }
+    
 }
