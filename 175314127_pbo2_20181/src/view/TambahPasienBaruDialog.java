@@ -35,5 +35,10 @@ public class TambahPasienBaruDialog extends JDialog{
      judulLabel.setBounds(150, 200,500,50);
      judulLabel.setFont(new Font ("Arial",Font.BOLD,16));
      this.add(judulLabel);
+     
+     isiText = new JTextField();
+     isiText.setBounds(230,214,100,50);
+     isiText.setSize(300, 25);
+     this.add(isiText);
  }
 }
