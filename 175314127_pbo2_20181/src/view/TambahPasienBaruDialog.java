@@ -72,7 +72,7 @@ public class TambahPasienBaruDialog extends JDialog{
  }
  public void text(){
      isiText = new JTextField();
-     isiText.setBounds(230,214,100,50);
+     isiText.setBounds(230, 214, 100, 50);
      isiText.setSize(300, 25);
      this.add(isiText);
      

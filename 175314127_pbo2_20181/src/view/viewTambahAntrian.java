@@ -13,6 +13,7 @@ import javax.swing.JDialog;
  * @author Alexander Adam
  */
 public class viewTambahAntrian {
+
     public static void main(String[] args) {
         TambahAntrianDialog test = new TambahAntrianDialog("Pasien Baru");
         test.setSize(800, 750);

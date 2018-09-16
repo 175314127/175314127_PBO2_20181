@@ -14,6 +14,7 @@ import javax.swing.JDialog;
  * @author Alexander Adam
  */
 public class viewTambahPasienBaru {
+
     public static void main(String[] args) {
         TambahPasienBaruDialog test = new TambahPasienBaruDialog("Antrian Baru");
         test.setSize(800, 750);
