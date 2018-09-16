@@ -73,7 +73,7 @@ private JButton save;
      this.add(judulLabel);
      
      save = new JButton("Simpan");
-     save.setBounds(300,400,100,50);
+     save.setBounds(380,500,100,50);
      save.setSize(100,50);
      this.add(save);
     }
