@@ -21,11 +21,11 @@ import javax.swing.JTextField;
  * @author admin
  */
 public class TambahPasienBaruDialog extends JDialog{
-    private JLabel judulLabel;
+  private JLabel judulLabel;
   private JTextField isiText;   
   private JComboBox tgl,bln,thn;
   private JButton simpan;
-  
+ 
  public TambahPasienBaruDialog (String judul){
      this.setTitle(judul); 
      init();
@@ -66,7 +66,8 @@ public class TambahPasienBaruDialog extends JDialog{
      this.add(judulLabel);
      
      simpan = new JButton("Simpan");
-     simpan.setBounds(600,300,500,50);
+     simpan.setBounds(300,400,500,50);
+     simpan.setSize(100,50);
      this.add(simpan);
  }
  public void text(){
