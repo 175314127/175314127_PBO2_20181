@@ -6,18 +6,17 @@
 package view;
 
 import java.awt.Color;
-import javax.swing.JColorChooser;
 import javax.swing.JDialog;
 
 /**
  *
  * @author Alexander Adam
  */
-public class view2 {
+public class viewTambahAntrian {
     public static void main(String[] args) {
-        TambahPasienBaruDialog test = new TambahPasienBaruDialog("Pasien Baru");
-        test.setSize(1000, 750);
-        test.getContentPane().setBackground(Color.CYAN);
+        TambahAntrianDialog test = new TambahAntrianDialog("Pasien Baru");
+        test.setSize(800, 750);
+        test.getContentPane().setBackground(Color.yellow);
         test.setVisible(true);
         test.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
     }

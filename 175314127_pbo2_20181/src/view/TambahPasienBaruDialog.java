@@ -36,7 +36,7 @@ public class TambahPasienBaruDialog extends JDialog{
      this.setLayout(null);
      
      judulLabel = new JLabel("Pasien Baru");
-     judulLabel.setBounds(350, 50, 1000, 50);
+     judulLabel.setBounds(320, 50, 1000, 50);
      judulLabel.setFont(new Font("Arial",Font.BOLD,30));
      this.add(judulLabel);
      
