@@ -30,6 +30,8 @@ public class Pasien {
     
     public static ArrayList<Pasien> daftarPasienKlinik = new ArrayList<Pasien>();
 
+   
+
     public Pasien(String nm, String alamat, String TL, int tglLahir, int blnLahir, int thnLahir, String noRKM) {
         this.nama = nm;
         this.alamat = alamat;
@@ -39,6 +41,12 @@ public class Pasien {
         this.TahunLahir = thnLahir;
         this.noRekamMedis = noRKM;
     }
+
+    public Pasien() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
 
     /**
      * Terdapat Getter getNoRekamMedis bertipe String yang berfungsi

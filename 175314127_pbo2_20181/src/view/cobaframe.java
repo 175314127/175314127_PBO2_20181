@@ -19,7 +19,7 @@ import javax.swing.JTextField;
  *
  * @author admin
  */
-public class RSFrame extends JFrame implements ActionListener{
+public class cobaframe extends JFrame implements ActionListener{
 private JMenuBar MenuBar;
 private JMenu fileMenu;
 private JMenuItem exit,MenuItem;
@@ -27,7 +27,7 @@ private JLabel judul,nama,noRKm,alamat;
 private JTextField namaText;
 private JButton save;
 
-public RSFrame(){
+public cobaframe(){
     init();
 }
 public void init(){

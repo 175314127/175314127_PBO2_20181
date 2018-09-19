@@ -3,23 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package testView;
 
-import java.awt.Color;
 import javax.swing.JDialog;
+import view.RSFrame;
 
 /**
  *
  * @author admin
  */
-public class view extends JDialog {
-
+public class MainRSFRame {
     public static void main(String[] args) {
-        DaftarAntrianPasien test = new DaftarAntrianPasien("Daftar Antrian Pasien");
-        test.setSize(500, 400);
+        RSFrame test = new RSFrame();
+        test.setSize(500,500);
+        test.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         test.setVisible(true);
-
-        
-       
     }
+ 
 }

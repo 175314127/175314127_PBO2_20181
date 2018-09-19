@@ -6,23 +6,26 @@
 package view;
 
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import model.Pasien;
 
 /**
  *
  * @author admin
  */
-public class TambahAntrianDialog extends JDialog {
+public class TambahAntrianDialog extends JDialog implements ActionListener {
 
     private JLabel judulLabel;
     private JTextField no, alamat, nama;
     private JComboBox tgl, bln, thn, Klinik;
-    private JButton save;
+    private JButton save,tambahbutton;
 
     public TambahAntrianDialog(String judul) {
         this.setTitle(judul);
@@ -128,5 +131,16 @@ public class TambahAntrianDialog extends JDialog {
         Klinik.setModel(new DefaultComboBoxModel(new String[]{"Klinik Mars", "Klinik Bumi",
             "Klinik Pluto", "Klinik Venus"}));
         this.add(Klinik);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        
+        if (e.getSource() == tambahbutton) {
+            Pasien baru = new Pasien();
+            baru.setNama(nama.getText());
+            baru.setAlamat(alamat.getText());
+            baru.setNoRekamMedis(no.getName());
+        }
     }
 }
