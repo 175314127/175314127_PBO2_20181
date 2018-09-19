@@ -5,13 +5,18 @@
  */
 package testView;
 
+import javax.swing.JFrame;
+import view.MainFrame;
+
 /**
  *
  * @author admin
  */
-public class MainFrame {
+public class MainFrametest {
     public static void main(String[] args) {
         MainFrame test = new MainFrame();
-        
+       test.setSize(500,500);
+       test.setVisible(true);
+       test.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 }

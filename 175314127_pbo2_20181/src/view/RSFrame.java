@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package testView;
+package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,11 +28,26 @@ private JTextField namaText;
 private JButton save;
 
 public RSFrame(){
+    init();
+}
+public void init(){
+    this.setLayout(null);
     
+    MenuBar = new JMenuBar();
+    fileMenu = new JMenu("File");
+    exit = new JMenuItem("Exit");
+    MenuItem = new JMenuItem("New");
+    
+    this.add(MenuBar);
+    this.add(exit);
+    this.add(fileMenu);
+    this.add(MenuItem);
+    this.setJMenuBar(MenuBar);
+    exit.addActionListener(this);
 }
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
 }

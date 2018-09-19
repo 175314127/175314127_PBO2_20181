@@ -33,10 +33,10 @@ public class MainFrame extends JFrame implements ActionListener{
         fileMenu = new JMenu("File");
         exit = new JMenuItem("Exit");
         TambahPasien = new JMenuItem("Tambah Pasien");
-        this.add(menuBar);
-        this.add(TambahPasien);
-        this.add(exit);
-        this.add(menuBar);
+        this.setJMenuBar(menuBar);
+        fileMenu.add(TambahPasien);
+        fileMenu.add(exit);
+        menuBar.add(fileMenu);
         
         exit.addActionListener(this);
         TambahPasien.addActionListener(this);
