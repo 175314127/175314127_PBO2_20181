@@ -47,7 +47,9 @@ public class MainFrame extends JFrame implements ActionListener{
             System.exit(0);
         }
         if (e.getSource() == TambahPasien) {
-            
+            TambahPasienBaruDialog test = new TambahPasienBaruDialog();
+            test.setSize(500,500);
+            test.setVisible(true);
         }
     }
 }

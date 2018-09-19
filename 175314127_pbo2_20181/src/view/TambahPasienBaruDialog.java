@@ -26,12 +26,14 @@ public class TambahPasienBaruDialog extends JDialog{
   private JComboBox tgl,bln,thn;
   private JButton simpan;
  
- public TambahPasienBaruDialog (String judul){
+ public void TambahPasienBaruDialog (String judul){
      this.setTitle(judul); 
      init();
      text();
      box();
  }
+
+   
  public void init(){
      this.setLayout(null);
      
