@@ -17,7 +17,7 @@ import javax.swing.JMenuItem;
  *
  * @author admin
  */
-public class MainFrame extends JFrame implements ActionListener{
+public final class MainFrame extends JFrame implements ActionListener{
     private JMenuBar menuBar;
     private JMenu fileMenu;
     private JMenuItem TambahPasien,exit;
@@ -48,8 +48,10 @@ public class MainFrame extends JFrame implements ActionListener{
         }
         if (e.getSource() == TambahPasien) {
             TambahPasienBaruDialog test = new TambahPasienBaruDialog();
-            test.setSize(500,500);
+            test.TambahPasienBaruDialog("Pasien Baru");
+            test.setSize(800,750);
             test.setVisible(true);
+            test.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         }
     }
 }

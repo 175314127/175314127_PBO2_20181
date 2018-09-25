@@ -7,12 +7,15 @@ package view;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.Year;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -20,14 +23,14 @@ import javax.swing.JTextField;
  *
  * @author admin
  */
-public class TambahPasienBaruDialog extends JDialog{
+public class TambahPasienBaruDialog extends JFrame {
   private JLabel judulLabel;
   private JTextField isiText;   
   private JComboBox tgl,bln,thn;
   private JButton simpan;
  
  public void TambahPasienBaruDialog (String judul){
-     this.setTitle(judul); 
+     this.setTitle("Pasien Baru"); 
      init();
      text();
      box();
@@ -108,4 +111,6 @@ public class TambahPasienBaruDialog extends JDialog{
      }
      this.add(thn);
  }
+
+ 
 }

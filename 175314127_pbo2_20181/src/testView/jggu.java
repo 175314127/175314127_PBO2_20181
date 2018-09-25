@@ -5,20 +5,17 @@
  */
 package testView;
 
-import javax.swing.JDialog;
-import view.RSFrame;
-
+import view.TambahPasienBaruDialog;
+import javax.swing.JFrame;
 /**
  *
- * @author admin
+ * @author Alexander Adam
  */
-public class MainRSFRame {
+public class jggu {
     public static void main(String[] args) {
-        RSFrame test = new RSFrame();
-        test.setSize(500,500);
-        
+        TambahPasienBaruDialog test = new TambahPasienBaruDialog();
+        test.setSize(800, 750);
         test.setVisible(true);
-        test.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        test.TambahPasienBaruDialog("Pasien Baru");
     }
- 
 }

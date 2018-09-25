@@ -21,7 +21,7 @@ import model.Pasien;
  *
  * @author Alexander Adam
  */
-public class RSFrame extends JDialog implements ActionListener{
+public class RSFrame extends JFrame implements ActionListener{
 
     private JMenuBar MenuBar;
     private JMenu fileMenu;
@@ -40,9 +40,7 @@ public class RSFrame extends JDialog implements ActionListener{
 
     public void init() {
         this.setLayout(null);
-
-        
-
+      
         judulLabel = new JLabel("Daftar Antrian Pasien");
         judulLabel.setBounds(150, 50, 150, 50);
         this.add(judulLabel);

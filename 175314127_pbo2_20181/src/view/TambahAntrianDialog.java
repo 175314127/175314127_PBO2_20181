@@ -12,6 +12,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import model.Pasien;
@@ -20,7 +21,7 @@ import model.Pasien;
  *
  * @author admin
  */
-public class TambahAntrianDialog extends JDialog implements ActionListener {
+public final class TambahAntrianDialog extends JFrame implements ActionListener {
 
     private JLabel judulLabel;
     private JTextField no, alamat, nama;
@@ -84,6 +85,7 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
     }
 
     public void text() {
+        this.setLayout(null);
         no = new JTextField();
         no.setBounds(230, 214, 100, 50);
         no.setSize(100, 25);
