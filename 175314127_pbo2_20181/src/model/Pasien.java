@@ -8,6 +8,7 @@ package model;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,11 +21,6 @@ import static model.Pasien.daftarPasienKlinik;
  * @author Alexander Adam
  */
 public class Pasien {
-
-  
-
-   
-
     /**
      * Deklarasi variabel noRekammedis,nama,alamat,tempatLahir dengan tipe
      * String dan TanggalLahir,BulanLahir,TahunLahir bertipe interger dan semua
@@ -37,10 +33,7 @@ public class Pasien {
     private int BulanLahir;
     private int TahunLahir;
     
-    
     public static ArrayList<Pasien> daftarPasienKlinik = new ArrayList<Pasien>();
-
-   
 
     public Pasien(String nm, String alamat, String TL, int tglLahir, int blnLahir, int thnLahir, String noRKM) {
         this.nama = nm;
@@ -51,11 +44,9 @@ public class Pasien {
         this.TahunLahir = thnLahir;
         this.noRekamMedis = noRKM;
     }
-
     public Pasien() {
        
     }
-
     /**
      * Terdapat Getter getNoRekamMedis bertipe String yang berfungsi
      * mengembalikan nilai objek yang sudah berisi variable noRekamMedis
@@ -250,15 +241,42 @@ public class Pasien {
             fos.write(data.getBytes());
             
             }
-       
+       fos.close();
         } catch (IOException ex) {
             Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
        public static void bacaDaftarPasien(File file) {
-           FileInputStream fis =null;
-          
+        try {
+            FileInputStream fis =null;
+            String hasil ="";
+            int data;
+            Pasien tmp = new Pasien();
+            boolean nama = false;
+            boolean alamat = false;
+            fis = new FileInputStream(file);
+            while ((data = fis.read())> 0) {
+                if ((char)data != '\n') {
+                    if ((char)data != '\t'){
+                        hasil = hasil + (char)data;
+                    }else if (nama = false) {
+                        tmp.setNama(hasil);
+                        nama = true;
+                        hasil = "";
+                    }
+                }else{
+                    tmp.setAlamat(hasil);
+                    alamat = true;
+                    hasil = "";
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+    @Override
        public String toString(){
          return ("nama "+nama+" Alamat "+alamat);
         
