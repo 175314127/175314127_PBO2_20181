@@ -6,7 +6,13 @@
 package model;
 
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static model.Pasien.daftarPasienKlinik;
 
 /**
@@ -14,6 +20,10 @@ import static model.Pasien.daftarPasienKlinik;
  * @author Alexander Adam
  */
 public class Pasien {
+
+  
+
+   
 
     /**
      * Deklarasi variabel noRekammedis,nama,alamat,tempatLahir dengan tipe
@@ -43,10 +53,8 @@ public class Pasien {
     }
 
     public Pasien() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
     }
-
-    
 
     /**
      * Terdapat Getter getNoRekamMedis bertipe String yang berfungsi
@@ -231,4 +239,28 @@ public class Pasien {
         }
         return null;
     }
+     public static void simpanDaftarPasien(File file) {
+        FileOutputStream fos = null;     
+       
+        try {
+            
+            for (int i = 0; i < daftarPasienKlinik.size(); i++) {
+            String data = daftarPasienKlinik.get(i).toString();
+                fos = new FileOutputStream(file,true);
+            fos.write(data.getBytes());
+            
+            }
+       
+        } catch (IOException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+       public static void bacaDaftarPasien(File file) {
+           FileInputStream fis =null;
+          
+    }
+       public String toString(){
+         return ("nama "+nama+" Alamat "+alamat);
+        
+       }
 }

@@ -5,6 +5,9 @@
  */
 package test;
 
+import java.io.File;
+import model.Pasien;
+
 /**
  *
  * @author admin
@@ -16,8 +19,8 @@ public class TestStream {
         test.setAlamat("klaten");
         
         Pasien test1 = new Pasien();
-        test.setNama("adi");
-        test.setAlamat("klaten");
+        test1.setNama("adi");
+        test1.setAlamat("klaten");
         
         System.out.println(test.toString());
         System.out.println(test1.toString());

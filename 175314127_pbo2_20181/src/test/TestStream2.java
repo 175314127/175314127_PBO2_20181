@@ -5,6 +5,9 @@
  */
 package test;
 
+import java.io.File;
+import model.Pasien;
+
 /**
  *
  * @author admin
