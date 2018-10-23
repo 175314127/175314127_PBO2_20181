@@ -231,23 +231,18 @@ public class Pasien {
         return null;
     }
      public static void simpanDaftarPasien(File file) {
-       FileOutputStream fos =null;
         try {
+            FileOutputStream fos =null;
             fos = new FileOutputStream(file,false);
             for (int i = 0; i < daftarPasien.size(); i++) {
                 String data = daftarPasien.get(i).toString();
                 fos.write(data.getBytes());
             }
+            fos.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
-           try {
-               fos.close();
-           } catch (IOException ex) {
-               Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
-           }
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);       
         }
     }
 
@@ -268,29 +263,27 @@ public class Pasien {
             boolean alamat = false;
         try {           
             fis = new FileInputStream(file);
-            while ((data = fis.read())> 0) {
+            while ((data = fis.read()) != -1) {
                 if ((char)data != '\n') {
-                    if ((char)data != '\t'){
-                        hasil = hasil + (char)data;
-                    }else if (nama == false) {
-                        tmp.setNama(hasil);
-                        nama = true;
-                        hasil = " ";
-                    }else if(alamat == false){
-                     tmp.setAlamat(hasil);
-                     alamat=true;
-                     hasil = " ";
-                    }
-                }else{
+                    hasil += (char) data;
+                    }else{
                     tmp.setAlamat(hasil);
                     alamat = true;
                     hasil = " ";
+                    tambahPasien(tmp);
                 }
             }
+            System.out.println(hasil);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+               try {
+                   fis.close();
+               } catch (IOException ex) {
+                   Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+               }
         }
     }
        public void printInfo() {
