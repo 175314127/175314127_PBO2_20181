@@ -1,1 +1,1 @@
-model.Pasien@6d06d69cmodel.Pasien@15db9742model.Pasien@6d06d69cnama puspa Alamat klatennama adi Alamat klaten
+nama puspa Alamat klatennama adi Alamat klaten

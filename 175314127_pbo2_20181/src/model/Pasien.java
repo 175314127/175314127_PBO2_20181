@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static model.Pasien.daftarPasienKlinik;
+
 
 /**
  *
@@ -33,7 +33,7 @@ public class Pasien {
     private int BulanLahir;
     private int TahunLahir;
     
-    public static ArrayList<Pasien> daftarPasienKlinik = new ArrayList<Pasien>();
+    public static ArrayList<Pasien> daftarPasien = new ArrayList<Pasien>();
 
     public Pasien(String nm, String alamat, String TL, int tglLahir, int blnLahir, int thnLahir, String noRKM) {
         this.nama = nm;
@@ -218,56 +218,73 @@ public class Pasien {
     }
 
     public static void tambahPasienBaru(Pasien pasien) {
-        daftarPasienKlinik.add(pasien);
+        daftarPasien.add(pasien);
     }
 
     public static Pasien cariPasien(String string) {
-        for (int i = 0; i < daftarPasienKlinik.size(); i++) {
-            if (daftarPasienKlinik.get(i).noRekamMedis == string) {
-                return daftarPasienKlinik.get(i);
+        for (int i = 0; i < daftarPasien.size(); i++) {
+            if (daftarPasien.get(i).noRekamMedis == string) {
+                return daftarPasien.get(i);
             }
 
         }
         return null;
     }
      public static void simpanDaftarPasien(File file) {
-        FileOutputStream fos = null;     
-       
+       FileOutputStream fos =null;
         try {
-            
-            for (int i = 0; i < daftarPasienKlinik.size(); i++) {
-            String data = daftarPasienKlinik.get(i).toString();
-                fos = new FileOutputStream(file,true);
-            fos.write(data.getBytes());
-            
+            fos = new FileOutputStream(file,false);
+            for (int i = 0; i < daftarPasien.size(); i++) {
+                String data = daftarPasien.get(i).toString();
+                fos.write(data.getBytes());
             }
-       fos.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+           try {
+               fos.close();
+           } catch (IOException ex) {
+               Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+           }
         }
     }
+
+    public static ArrayList<Pasien> getDaftarPasien() {
+        return daftarPasien;
+    }
+
+    public static void setDaftarPasien(ArrayList<Pasien> daftarPasien) {
+        Pasien.daftarPasien = daftarPasien;
+    }
+     
        public static void bacaDaftarPasien(File file) {
-        try {
-            FileInputStream fis =null;
+           FileInputStream fis =null;
             String hasil ="";
             int data;
             Pasien tmp = new Pasien();
             boolean nama = false;
             boolean alamat = false;
+        try {           
             fis = new FileInputStream(file);
             while ((data = fis.read())> 0) {
                 if ((char)data != '\n') {
                     if ((char)data != '\t'){
                         hasil = hasil + (char)data;
-                    }else if (nama = false) {
+                    }else if (nama == false) {
                         tmp.setNama(hasil);
                         nama = true;
-                        hasil = "";
+                        hasil = " ";
+                    }else if(alamat == false){
+                     tmp.setAlamat(hasil);
+                     alamat=true;
+                     hasil = " ";
                     }
                 }else{
                     tmp.setAlamat(hasil);
                     alamat = true;
-                    hasil = "";
+                    hasil = " ";
                 }
             }
         } catch (FileNotFoundException ex) {
@@ -276,6 +293,21 @@ public class Pasien {
             Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+       public void printInfo() {
+        System.out.printf("%-25s", "Nomor Rekam Medis Pasien");
+        System.out.println(": " + getNoRekamMedis());
+        System.out.printf("%-25s", "Nama Pasien");
+        System.out.println(": " + getNama());
+        System.out.printf("%-25s", "Tempat, Tanggal Lahir");
+        System.out.print(": " + getTempatLahir() + " , ");
+        getTanggalLahir();
+        System.out.printf("%-25s", "Alamat");
+        System.out.println(": " + getAlamat());
+        System.out.println("");
+}
+       public static void tambahPasien(Pasien pasien){
+           getDaftarPasien().add(pasien);
+       }
     @Override
        public String toString(){
          return ("nama "+nama+" Alamat "+alamat);
