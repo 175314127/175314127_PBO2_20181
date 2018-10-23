@@ -308,6 +308,7 @@ public class Pasien {
        public static void tambahPasien(Pasien pasien){
            getDaftarPasien().add(pasien);
        }
+       
     @Override
        public String toString(){
          return ("nama "+nama+" Alamat "+alamat);
