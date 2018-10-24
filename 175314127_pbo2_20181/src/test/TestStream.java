@@ -7,6 +7,7 @@ package test;
 
 import java.io.File;
 import model.Pasien;
+import model.RumahSakit;
 
 /**
  *
@@ -25,9 +26,9 @@ public class TestStream {
         System.out.println(test.toString());
         System.out.println(test1.toString());
         
-        Pasien.tambahPasienBaru(test);
-        Pasien.tambahPasienBaru(test1);
+        RumahSakit.tambahPasienBaru(test);
+        RumahSakit.tambahPasienBaru(test1);     
         
-        Pasien.simpanDaftarPasien(new File("daftar.txt"));
+        RumahSakit.simpanDaftarPasien(new File("daftar.txt"));     
     }
 }

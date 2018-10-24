@@ -16,6 +16,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JTextField;
 import model.Pasien;
+import model.RumahSakit;
 
 /**
  *
@@ -90,7 +91,7 @@ public class RSFrame extends JFrame implements ActionListener{
         o.setNama(namaText.getText());
         o.setAlamat(namaText.getText());
         
-        Pasien.tambahPasienBaru(o);
+        RumahSakit.tambahPasienBaru(o);
     }
 
     

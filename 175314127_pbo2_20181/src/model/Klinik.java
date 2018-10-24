@@ -16,6 +16,9 @@ public class Klinik {
     private String idKlinik;
     private String nama;
 
+    public Klinik() {
+    }
+
     /**
      * Terdapat Getter getIdKlinik bertipe String yang berfungsi mengembalikan
      * nilai objek yang sudah berisi variable idKlinik
