@@ -10,7 +10,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,12 +19,12 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author admin
+ * @author Alex
  */
 public class RumahSakit implements Serializable{
     private String nama,alamat;
- private ArrayList<Pasien> daftarPasien = new ArrayList<Pasien>();
- 
+    private ArrayList<Pasien> daftarPasien = new ArrayList<Pasien>();
+
     public RumahSakit() {
     }
 
@@ -33,9 +33,10 @@ public class RumahSakit implements Serializable{
         this.alamat = alamat;
     }
     
-    public  void tambahPasien(Pasien pasien){
-        getDaftarPasien().add(pasien);
+    public void tambahPasien(Pasien pasien){
+        daftarPasien.add(pasien);
     }
+    
     public Pasien cariPasien(String noRM){
         for (int i = 0; i < daftarPasien.size(); i++) {
             if (daftarPasien.get(i).getNoRekamMedis() == noRM) {
@@ -44,120 +45,89 @@ public class RumahSakit implements Serializable{
         }
         return null;
     }
+    
     public void tambahPasienBaru(Pasien test){
-        daftarPasien.add(test);
-    }
-    public  void simpanDaftarPasien(File file){
-        FileOutputStream fos = null;
-        try {
-            fos = new FileOutputStream(file,false);
-            for (int i = 0; i < daftarPasien.size(); i++) {
-                String data = daftarPasien.get(i).toString();
-                fos.write(data.getBytes());                
-            }
-            fos.close();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
+        Pasien cari = this.cariPasien(test.getNama());
+        if (cari == null) {
+            daftarPasien.add(test);
         }
     }
-    public  void bacaDaftarPasien(File file){
-        FileInputStream fis = null;
-        String hasil = " ";
-        Pasien temp = new Pasien();
-        boolean nama = false;
-        boolean alamat = false;
-        int data;
+    
+    public void simpanDaftarPasien(File file)throws IOException{
+        FileOutputStream fos = null;
         try {
-            fis = new FileInputStream(file);
-            while ((data= fis.read()) != -1) {
-                if ((char)data != '\n') {
-                    hasil += (char)data;
-                }else{
-                    temp.setAlamat(hasil);
-                    alamat = true;
-                    hasil = " ";
-                    tambahPasien(temp);
-                }               
+            fos = new FileOutputStream(file, false);
+            for (int i = 0; i < daftarPasien.size(); i++) {
+                String data = daftarPasien.get(i).toString();
+                fos.write(data.getBytes());
             }
-            System.out.println(hasil);
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
-            try {
-                fis.close();
-            } catch (IOException ex) {
-                Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }       
-    }
-    public void  simpanObjekRumahSakit(File file){
-        ObjectOutputStream obj = null;
-         FileOutputStream fos =null;
-         
-        try {
-            fos = new FileOutputStream(file);
-            obj = new ObjectOutputStream(fos);           
-           obj.writeObject(this);
-           
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
             try {
                 fos.close();
             } catch (IOException ex) {
-                Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+}
     }
-    public  void bacaObjekRumahSakit(File file){
-        ObjectInputStream obj = null;
-        FileInputStream fis =null;
+    
+    public void bacaDaftarPasien(File file){
+        FileInputStream fis = null;
+        String hasil = " ";
+        int data;
+        boolean noRM = false;
+        boolean nama = false;
+        boolean alamat = false;
+        Pasien temp = new Pasien();
         try {
             fis = new FileInputStream(file);
-            obj = new ObjectInputStream(fis);
-            
-            RumahSakit rs = (RumahSakit)obj.readObject();
-            this.setAlamat(rs.getNama());
-            this.setNama(rs.getAlamat());
-            this.setDaftarPasien(rs.getDaftarPasien());
-            
+            while ((data = fis.read()) != -1) {
+                if((char) data != '\n'){
+                if ((char) data != '\t') {
+                    hasil += (char) data;
+                }else{
+                    if (noRM == false) {
+                        temp.setNoRekamMedis(hasil);
+                        noRM = true;
+                        hasil = " ";
+                    }else if (nama == false){
+                        temp.setNama(hasil);
+                        nama = true;
+                        hasil = " ";
+                    }
+                }
+            }else{
+                    temp.setAlamat(hasil);
+                    alamat = true;
+                    hasil = " ";
+                    tambahPasienBaru(temp);
+                    noRM = false;
+                    nama = false;
+                    alamat = false;
+                    temp = new Pasien();
+                    }
+            }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        }
+    }
+    
+    public void simpanObjekRumahSakit(File file){
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+            fos = new FileOutputStream(file);
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(this);
+        } catch (FileNotFoundException ex) {
             Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
-        }      
-    }
-public  ArrayList<Pasien> getDaftarPasien(){
-        return daftarPasien;
-}
-public void setDaftarPasien(ArrayList<Pasien> daftarPasien){
-   this.daftarPasien = daftarPasien;
-}
-
-    public String getNama() {
-        return nama;
-    }
-
-    public void setNama(String nama) {
-        this.nama = nama;
-    }
-
-    public String getAlamat() {
-        return alamat;
-    }
-
-    public void setAlamat(String alamat) {
-        this.alamat = alamat;
-    }
-    public void tambahKlinik(Klinik klinik){
-        
+        } catch (IOException ex) {
+            Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
