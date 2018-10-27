@@ -11,6 +11,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,13 +21,17 @@ import java.util.logging.Logger;
  *
  * @author Alexander Adam
  */
-public class Pasien {
+public class Pasien implements Serializable{
+
+    public static void tambahPasienBaru(Pasien test) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     /**
      * Deklarasi variabel noRekammedis,nama,alamat,tempatLahir dengan tipe
      * String dan TanggalLahir,BulanLahir,TahunLahir bertipe interger dan semua
      * variabel bersifat private
      */
-    private String noRekamMedis, nik;
+    private String NomorRekamMedis, nik;
     private String nama, alamat;
     private String TempatLahir;
     private int TanggalLahir;
@@ -42,7 +47,7 @@ public class Pasien {
         this.TanggalLahir = tglLahir;
         this.BulanLahir = blnLahir;
         this.TahunLahir = thnLahir;
-        this.noRekamMedis = noRKM;
+        this.NomorRekamMedis = noRKM;
     }
     public Pasien() {
        
@@ -54,7 +59,7 @@ public class Pasien {
      * @return
      */
     public String getNoRekamMedis() {
-        return noRekamMedis;
+        return NomorRekamMedis;
     }
 
     /**
@@ -62,8 +67,8 @@ public class Pasien {
      *
      * @param noRekamMedis
      */
-    public void setNoRekamMedis(String noRekamMedis) {
-        this.noRekamMedis = noRekamMedis;
+    public void setNomorRekamMedis(String noRekamMedis) {
+        this.NomorRekamMedis = noRekamMedis;
     }
 
     /**
@@ -234,4 +239,6 @@ public class Pasien {
          return ("nama "+nama+" Alamat "+alamat);
         
        }
+
+
 }

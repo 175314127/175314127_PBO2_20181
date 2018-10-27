@@ -25,6 +25,8 @@ import java.util.logging.Logger;
 public class RumahSakit implements Serializable{
     private String nama,alamat;
     private ArrayList<Pasien> daftarPasien = new ArrayList<Pasien>();
+    private ArrayList<Klinik>daftarKlinik = new ArrayList<Klinik>();
+    private ArrayList<Klinik> daftarAntrianKlinik = new ArrayList<Klinik>();
 
     public RumahSakit() {
     }
@@ -54,7 +56,7 @@ public class RumahSakit implements Serializable{
         }
     }
     
-    public void simpanDaftarPasien(File file)throws IOException{
+    public  void simpanDaftarPasien(File file)throws IOException{
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(file, false);
@@ -91,7 +93,7 @@ public class RumahSakit implements Serializable{
                     hasil += (char) data;
                 }else{
                     if (noRM == false) {
-                        temp.setNoRekamMedis(hasil);
+                        temp.setNomorRekamMedis(hasil);
                         noRM = true;
                         hasil = " ";
                     }else if (nama == false){
@@ -175,5 +177,41 @@ public class RumahSakit implements Serializable{
     public void setDaftarPasien(ArrayList<Pasien> daftarPasien) {
         this.daftarPasien = daftarPasien;
     }
+    
+    public void tambahKlinik(Klinik klinik){
+        daftarKlinik.add(klinik);
+    }
+    public Klinik cariKlinik(String namaKlinik){
+        for (int i = 0; i < daftarKlinik.size(); i++) {
+            if (daftarKlinik.get(i).getNama().equals(namaKlinik)) {
+                return daftarKlinik.get(i);
+            }
+        }return null;
+    }
+    
+    public void buatAntrian(int tanggal,int bulan, int tahun, Klinik klinik){
+        
+    }
+    
+    public int cariAntrian(int tanggal,int bulan,int tahun, Klinik klinik){
+        return 0;
+    }
+
+    public ArrayList<Klinik> getDaftarKlinik() {
+        return null;
+    }
+
+    public void setDaftarKlinik(ArrayList<Klinik> daftarKlinik) {
+//        this.daftarKlinik = daftarKlinik;
+    }
+
+    public ArrayList<Klinik> getDaftarAntrianKlinik() {
+        return null;
+    }
+
+    public void setDaftarAntrianKlinik(ArrayList<Klinik> daftarAntrianKlinik) {
+//        this.daftarAntrianKlinik = daftarAntrianKlinik;
+    }
+
     
 }
