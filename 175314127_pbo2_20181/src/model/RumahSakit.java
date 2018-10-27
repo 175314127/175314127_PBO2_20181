@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -130,4 +131,49 @@ public class RumahSakit implements Serializable{
             Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void bacaObjekRumahSakit(File file){
+        FileInputStream fis = null;
+        ObjectInputStream ois = null;
+        try {
+            fis = new FileInputStream(file);
+            ois = new ObjectInputStream(fis);
+            
+            RumahSakit rs = (RumahSakit) ois.readObject();
+            this.setNama(rs.getNama());
+            this.setAlamat(rs.getAlamat());
+            this.setDaftarPasien(rs.getDaftarPasien());
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
+    }
+
+    public ArrayList<Pasien> getDaftarPasien() {
+        return daftarPasien;
+    }
+
+    public void setDaftarPasien(ArrayList<Pasien> daftarPasien) {
+        this.daftarPasien = daftarPasien;
+    }
+    
 }
